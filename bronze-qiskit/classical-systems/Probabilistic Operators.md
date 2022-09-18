@@ -1,4 +1,6 @@
 # Playing with Matrixes
+We need to actually make a function that takes probabilistic operator and a probabilistic state, and then returns the new probabilistic state i.e. `Simple Matrix Multiplication`.
+
 Let's assume a situation: Some conditions are provided::
 Probabilistic_Operators
 whenever she gets a `head`, one euro is flipped;
@@ -22,3 +24,28 @@ each entry non-negative; the summattion of each entry in each column is equal to
 Finding transition probability from example `the second state to the third state` in a 3*3 Matrix is shown below.
 
 It justs points to 3.2 element of the matrix 
+
+## Function in Python
+```python
+def linear_evolve(operator,state):
+    newstate=[]
+    for i in range(len(operator)): # for each row
+        # we calculate the corresponding entry of the new state
+        newstate.append(0) # we set this value to 0 for the initialization
+        for j in range(len(state)): # for each element in state
+            newstate[i] = newstate[i] + operator[i][j] * state[j] # summation of pairwise multiplications
+    return newstate # return the new probabilistic state
+# Example shown below....
+# operator for the test
+B = [
+    [0.4,0.6,0],
+    [0.2,0.1,0.7],
+    [0.4,0.3,0.3]
+]
+
+# state for test
+v = [0.1,0.3,0.6]
+
+newstate = linear_evolve(B,v)
+print(newstate)
+```
