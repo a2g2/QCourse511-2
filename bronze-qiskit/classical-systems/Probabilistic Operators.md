@@ -26,6 +26,7 @@ Finding transition probability from example `the second state to the third state
 It justs points to 3.2 element of the matrix 
 
 ## Function in Python
+
 ```python
 def linear_evolve(operator,state):
     newstate=[]
